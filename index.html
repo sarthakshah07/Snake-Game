@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>snake game</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="#">
+
+</head>
+
+<body>
+    <div class="body">
+        <div id="board"></div>
+        <div id="heading">
+            <h1>SNAKE GAME</h1>
+        </div>
+        <div id="scoreBox">
+            score: 0
+        </div>
+        <div id="hiscoreBox">
+            Highest Score: 0
+        </div>
+        <div id="play">
+            <button onclick="start()">START</button>
+        </div>
+        <!-- <div>
+            <button><img src="../snake game/static/"></img></button>
+        </div> -->
+
+        <div id="gamePad">
+            <button id="up" onclick="Up()">Up</button><br><br>
+
+            <button id="left" onclick="Left()">Left</button>
+            <button id="right" onclick="Right()">Right</button><br><br>
+            <button id="down" onclick="Down()">Down</button>
+        </div>
+
+
+
+
+        <div class="popup" id="Popup">
+            <div id="popHead">
+                <img src="/static/skull.png">
+                <h3> GAME OVER </h3>
+                <img src="/static/skull.png">
+            </div>
+
+            <div id="scoreBoxPop">
+                score: 0
+            </div>
+            <div id="text">
+                <h3 style="color: aliceblue;">You Can do better</h3>
+            </div>
+            <div id="btnPop">
+                <button id="tryAgain" onclick="closePopup()">Try Again</button>
+                <button id="tryAgain" onclick="closePopupQuit()">Quit</button>
+
+            </div>
+        </div>
+        <div>
+
+            <button onclick="play()" class="soundBtn"><img src="/static/soundOn.png"></img></button>
+            <button onclick="pause()" class="soundBtn2"><img src="/static/sound0ff.png"></img></button>
+
+        </div>
+        <button id="quit" onclick="Quit()"><img src="/static/poweroff.png">Quit</button>
+    </div>
+</body>
+<script src="../js/index.js">
+// src="../js/index.js"
+
+
+</script>
+
+</html>

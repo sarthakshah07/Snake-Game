@@ -1,0 +1,505 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.body {
+    background-image: url("../static/background.jpg");
+    min-height: 100vh;
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+}
+
+#board {
+    /* position: absolute;
+    z-index: 9; */
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-right: 25%;
+    /* background-image: url("../static/boardback.jpeg"); */
+    background-color: rgb(205, 158, 101);
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+    border: 1px solid black;
+    height: 63vmin;
+    width: 105vmin;
+    box-shadow: 2px 2px 100px rgb(12, 12, 12);
+    display: grid;
+    grid-template-rows: repeat(18, 1fr);
+    grid-template-columns: repeat(18, 1fr);
+
+}
+
+#heading {
+    position: absolute;
+    top: 8%;
+    left: 60%;
+
+    width: 20%;
+
+    background: none;
+    /* margin-top: 6%;*/
+    margin-left: 4%;
+    /* margin-right: 18%; */
+    font-size: 100%;
+    color: red;
+    height: 10vh;
+}
+
+#scoreBox {
+    position: absolute;
+    top: 85%;
+    /* margin-left: 10vh; */
+    right: 30%;
+    font-size: 400%;
+
+    font-weight: bolder;
+    color: red;
+}
+
+#hiscoreBox {
+    position: absolute;
+    top: 20%;
+    right: 1%;
+    font-size: 200%;
+    font-weight: lighter;
+    color: rgb(18, 18, 18);
+    opacity: .8;
+    margin-right: 18%;
+}
+
+#play {
+    position: absolute;
+    top: 65%;
+    right: 4%;
+}
+
+#play button {
+    width: 20vh;
+    height: 5vh;
+    font-size: 5vh;
+    font-weight: bolder;
+    font-style: italic;
+    color: rgb(28, 27, 120);
+    background: none;
+    border: none;
+    transform: rotateZ(12deg);
+    cursor: pointer;
+}
+
+#play button:hover {
+    color: rgb(21, 236, 21);
+    transform: scale(1), rotateZ(12deg);
+}
+
+/* gamepad */
+#gamePad {
+    position: absolute;
+    top: 71%;
+    left: 20%;
+    height: 28vh;
+    width: 33vh;
+    border-radius: 15PX;
+    /* border: 1px solid rgb(3, 3, 3); */
+    background: none;
+}
+
+#up,
+#down {
+    position: static;
+    font-size: larger;
+    width: 15vh;
+    height: 7vh;
+    margin-left: 8vh;
+    cursor: pointer;
+    border-radius: 40%;
+    color: brown;
+    background-color: rgb(220, 215, 145);
+
+}
+
+#left {
+    position: static;
+    /* position: absolute; */
+    font-size: larger;
+    width: 15vh;
+    height: 7vh;
+    cursor: pointer;
+    border-radius: 40%;
+    color: brown;
+    background-color: rgb(220, 215, 145);
+}
+
+#right {
+    position: sticky;
+    cursor: pointer;
+    /* position: absolute; */
+    font-size: larger;
+    width: 15vh;
+    height: 7vh;
+    margin-left: 10px;
+    border-radius: 40%;
+    color: brown;
+    background-color: rgb(220, 215, 145);
+}
+
+#up:hover,
+#down:hover,
+#left:hover,
+#right:hover {
+    transform: scale(1.03);
+    color: rgb(27, 20, 212);
+    box-shadow: 1px 1px 5px rgb(11, 19, 234);
+}
+
+/* snake */
+.head {
+    /* background-color: red; */
+    background-image: url('../static/head.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    border-radius: 55px;
+    transform: scale(1.8);
+}
+
+.food {
+    /* background-color:yellow; */
+
+    border-radius: 9px;
+    box-shadow: 4px 4px 50px rgb(241, 26, 15);
+    transform: scale(1);
+    background-image: url("../static/food.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    transform: scale(1.2);
+}
+
+.food:hover {
+    box-shadow: 3px 3px 10px purple;
+}
+
+.snake {
+
+    /* background-image: url('../static/tail.png');
+     */
+
+    background-color: green;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    transform: scale(.6);
+    /* transform: scaleX(.6); */
+}
+
+/* ------------------------------------------------------------------------------- */
+
+.popup {
+    position: absolute;
+    /* top: 20vh; */
+    top: 0;
+    left: 62vh;
+    width: 400px;
+    height: 200px;
+    border: 2px solid rgb(205, 8, 8);
+    background-color: rgb(121, 120, 120);
+    border-radius: 15%;
+    box-shadow: 3px 3px 30px red;
+    /* opacity: 1; */
+    display: flex;
+    flex-direction: column;
+    transform: translate(-50%, -50%) scale(.1);
+    visibility: hidden;
+    transition: transform .4s, top .4s;
+}
+
+.Openpopup {
+
+    visibility: visible;
+    top: 32vh;
+    transform: translate(-50%, -50%) scale(1.5);
+    /* transition: transform 0.4s, top 0.4s; */
+
+}
+
+#popHead {
+    margin-top: 1%;
+    color: red;
+    font-size: 30px;
+    height: 50px;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+
+#popHead img {
+    /* transform: scale(.5); */
+    width: 60px;
+    height: 50px;
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+
+}
+
+#scoreBoxPop {
+    /* border: 1px solid black; */
+    width: inherit;
+    position: absolute;
+    top: 25%;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+#text {
+    width: inherit;
+    position: absolute;
+    top: 55%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+#btnPop {
+    width: inherit;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    position: absolute;
+    bottom: 10%;
+}
+
+#tryAgain {
+    height: 2rem;
+    width: 7rem;
+    color: rgb(241, 241, 241);
+    background: local;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px double rgb(241, 241, 241);
+    cursor: pointer;
+}
+
+#tryAgain:hover {
+    transform: scale(1.2);
+    color: red;
+    border-bottom: 3px double red;
+}
+
+.soundBtn {
+    position: absolute;
+    top: 73%;
+    left: 10%;
+    height: 1px;
+    background: transparent;
+    border: none;
+
+}
+
+.soundBtn img {
+    height: 4rem;
+    visibility: visible;
+}
+
+.soundBtn2 {
+    position: absolute;
+    top: 84%;
+    left: 10%;
+    height: 1px;
+    background: transparent;
+    border: none;
+}
+
+.soundBtn2 img {
+    height: 4rem;
+    color: red;
+
+}
+
+#quit {
+    position: absolute;
+    top: 80%;
+    left: 40%;
+    height: 5rem;
+    width: 7rem;
+    color: rgb(241, 241, 241);
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: local;
+    font-size: larger;
+    border: none;
+
+}
+
+#quit img {
+    height: 4rem;
+    color: red;
+    cursor: pointer;
+}
+
+#quit img:hover {
+    box-shadow: 1px 1px 20px red;
+    border-radius: 60%;
+}
+
+
+
+
+/* responsive media  */
+@media screen and (max-width: 1000px) and (min-width: 100px) {
+    .body {
+        margin: 0;
+        /* display: flex;
+        flex: 1; */
+        /* flex-direction: row; */
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+
+    #heading {
+        top: 1%;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        height: inherit;
+        position: absolute;
+        font-size: 2vh;
+        display: flex;
+        justify-content: center;
+
+    }
+
+    #board {
+        /* position: absolute; */
+        position: absolute;
+        margin-top: 6vh;
+        margin-left: 1vh;
+        height: 35%;
+        width: 95%;
+    }
+
+    #scoreBox {
+        position: absolute;
+        top: 50%;
+        /* margin-left: 10vh; */
+        right: 1%;
+        left: 1%;
+
+        font-size: 7vh;
+        font-weight: lighter;
+        color: rgb(13, 13, 13);
+
+    }
+
+    #hiscoreBox {
+        position: absolute;
+        top: 43%;
+        right: 1%;
+        font-size: 4vh;
+        font-weight: lighter;
+        color: rgb(18, 18, 18);
+        opacity: 2;
+        color: rgb(232, 4, 4);
+        width: 80%;
+    }
+
+    #play {
+        right: 17%;
+        top: 63%;
+    }
+
+    #play button {
+        width: 0px;
+        height: 5vh;
+        font-size: 2.5vh;
+
+        transform: rotateZ(35deg);
+
+    }
+
+    #gamePad {
+        position: absolute;
+        top: 65%;
+        left: 5%;
+        height: 28%;
+        width: 80%;
+        /* border-radius: 15PX; */
+        border: none;
+        /* border: 1px solid rgb(3, 3, 3); */
+        /* background: none; */
+    }
+
+    #up,
+    #down,
+    #right,
+    #left {
+
+        position: relative;
+    }
+
+    .soundBtn {
+        left: 80%;
+    }
+
+    .soundBtn2 {
+        left: 80%;
+    }
+
+    #quit {
+        top: 88%;
+        left: 55%;
+        height: 5rem;
+
+    }
+
+    .popup {
+
+        /* top: 20vh; */
+        top: 0;
+        left: 50%;
+        width: 60%;
+        height: 20%;
+
+    }
+
+    .Openpopup {
+
+        top: 23%;
+        transform: translate(-50%, -50%) scale(1.);
+        /* transition: transform 0.4s, top 0.4s; */
+
+    }
+
+    #popHead {
+        font-size: 150%;
+    }
+
+    #text {
+        width: 100%;
+        position: absolute;
+        top: 60%;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    #btnPop {
+        width: 100%;
+        bottom: 5%;
+    }
+
+    #scoreBoxPop {
+        width: 100%;
+        top: 30%;
+        font-size: 300%;
+    }
+}
